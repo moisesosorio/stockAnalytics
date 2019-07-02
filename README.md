@@ -1,2 +1,0 @@
-# stockAnalytics
-Stock markets analytics
