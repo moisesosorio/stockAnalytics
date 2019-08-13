@@ -1,7 +1,7 @@
 package com.stock.process
 
 import org.apache.spark.sql.{DataFrame, SparkSession}
-import com.stock.spotify.spotifyMethods
+import com.stock.channels.{spotifyMethods, youtubeMethods}
 import com.typesafe.config.Config
 
 object executeProcess {
@@ -14,27 +14,32 @@ object executeProcess {
   var testState : String = ""
   var spotifyState : String = ""
   var yahooState : String = ""
-  var youtube : String = ""
+  var youtubeState : String = ""
 
   var dfTestData: DataFrame = _
 
   def defGetParams(inputConfig: Config): Unit = {
     testConfig = inputConfig.getConfig("analytics.input.test")
     spotifyConfig = inputConfig.getConfig("analytics.input.spotify")
+    youtubeConfig = inputConfig.getConfig("analytics.input.youtube")
 
-    spotifyState = spotifyConfig.getString("state")
     testState = testConfig.getString("state")
+    spotifyState = spotifyConfig.getString("state")
+    youtubeState = youtubeConfig.getString("state")
+
 
   }
 
   def executeProcessSpotify(spark: SparkSession): Unit = {
     val spotifyClass = new spotifyMethods
-    val df_spotify = spotifyClass.spotifyProcess(spotifyConfig)
+    spotifyClass.spotifyProcess(spotifyConfig)
 
   }
 
-  def executeProcessTest(spark: SparkSession): Unit ={
-    val
+  def executeProcessYoutube(spark: SparkSession): Unit ={
+    val youtubeClass = new youtubeMethods
+    youtubeClass.youtubeProcess(youtubeConfig)
+
   }
 
 
@@ -45,8 +50,8 @@ object executeProcess {
     if (spotifyState == "active"){
       executeProcessSpotify(spark)
     }
-    if (testState == "active"){
-
+    if (youtubeState == "active"){
+      executeProcessYoutube(spark)
     }
 
 
