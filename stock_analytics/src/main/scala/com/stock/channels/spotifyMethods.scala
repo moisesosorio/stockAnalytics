@@ -2,6 +2,7 @@ package com.stock.channels
 
 import org.apache.spark.sql.DataFrame
 import com.typesafe.config.Config
+import com.stock.parameters.{paramSpotify => prSpo}
 import com.stock.apis.apisRestProcess
 
 class spotifyMethods {

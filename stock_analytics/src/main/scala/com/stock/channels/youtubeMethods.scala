@@ -12,7 +12,7 @@ class youtubeMethods {
   val token = "AIzaSyCkraRNEMz5tcFAKGNSLzMJ-5RluRt-4zU"
 
   def getDataYoutube(url: String, token: String): String = {
-    dataYoutube = apiRest.getRestContentWithToken(url, token)
+    dataYoutube = "dd"//apiRest.getRestContentWithToken(url, token)
     dataYoutube
   }
 

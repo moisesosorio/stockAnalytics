@@ -3,7 +3,7 @@ package com.stock.apis
 import com.typesafe.config.Config
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.impl.client.HttpClientBuilder
-import com.stock.apis.auth
+//import com.stock.apis.auth
 
 import scala.io.Source.fromInputStream
 
@@ -41,7 +41,7 @@ class apisRestProcess {
   def getToken(config: Config): String ={
     val strOutput : String = ""
     val authentication = new auth
-    strOutput = authentication.defGetLoginURLSpotify(config)
+    //strOutput = authentication.defGetLoginURLSpotify(config)
 
     strOutput
   }

@@ -21,6 +21,8 @@ protected trait stockAnalyticsJobTrait {
 
     executeProcess.defExecuteProcess(spark, globalConfig)
 
+    executeProcess.alicorp(spark, globalConfig)
+
   }
 }
 
